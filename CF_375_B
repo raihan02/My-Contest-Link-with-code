@@ -1,0 +1,159 @@
+/**
+/// Raihan Chowdhury
+/// International Islamic University Chittagong
+/// Uva : raihan02
+/// Codeforces: raihan022
+/// Lightoj: Omar Faruk Apu
+/// FaceBook : https://www.facebook.com/profile.php?id=100006579644699
+/// Gmail: raihanraju02@gmail.com
+**/
+#include<bits/stdc++.h>
+using namespace std;
+
+#define ll          long long int
+#define sf          scanf
+#define pf          printf
+#define F           first
+#define S           second
+#define pb          push_back
+#define GCD(a, b)   __gcd(a, b)
+#define LCM(a, b)   ((a*b)/GCD(a, b))
+
+#define MOD         1000000007
+#define M           10000
+#define deb(x) cerr << #x << " = " << x << endl;
+template < typename F, typename S >
+ostream& operator << ( ostream& os, const pair< F, S > & p )
+{
+    return os << "(" << p.first << ", " << p.second << ")";
+}
+
+template < typename T >
+ostream &operator << ( ostream & os, const vector< T > &v )
+{
+    os << "{";
+    typename vector< T > :: const_iterator it;
+    for( it = v.begin(); it != v.end(); it++ )
+    {
+        if( it != v.begin() ) os << ", ";
+        os << *it;
+    }
+    return os << "}";
+}
+
+template < typename T >
+ostream &operator << ( ostream & os, const set< T > &v )
+{
+    os << "[";
+    typename set< T > :: const_iterator it;
+    for ( it = v.begin(); it != v.end(); it++ )
+    {
+        if( it != v.begin() ) os << ", ";
+        os << *it;
+    }
+    return os << "]";
+}
+
+template < typename F, typename S >
+ostream &operator << ( ostream & os, const map< F, S > &v )
+{
+    os << "[";
+    typename map< F , S >::const_iterator it;
+    for( it = v.begin(); it != v.end(); it++ )
+    {
+        if( it != v.begin() ) os << ", ";
+        os << it -> first << " = " << it -> second ;
+    }
+    return os << "]";
+}
+
+
+#define deb(x) cerr << #x << " = " << x << endl;
+template<class T>
+inline bool fs(T &x)
+{
+    int c=getchar();
+    int sgn=1;
+    while(~c&&c<'0'||c>'9')
+    {
+        if(c=='-')sgn=-1;
+        c=getchar();
+    }
+    for(x=0; ~c&&'0'<=c&&c<='9'; c=getchar())
+        x=x*10+c-'0';
+    x*=sgn;
+    return ~c;
+}
+int fun(string s , int n)
+{
+        int ans=0;
+    for(int i = 0;i < n; i++){
+        if(s[i]!='_') {
+            ans++;
+            for(int j =i; j < n; j++){
+                if(s[j]=='_') break;
+                else i++;
+            }
+        }
+    }
+    return ans;
+
+}
+int fun1 (string str){
+    int len;
+    int ans=0;
+    for(int i= 0; i < str.size(); i++)
+        if(str[i]!='_'){
+        len=0;
+        for(int j= i ;j < str.size(); j++) {
+            if(str[j] == '_')
+            break;
+            len++;
+            i++;
+        }
+        ans=max(len, ans);
+    }
+    return ans;
+}
+int main()
+{
+    vector <string> vs;
+
+    int n;
+    fs(n);
+    string s;
+    cin >> s;
+
+    for(int i = 0;i < n; i++)
+        if(s[i] == '(')
+        {
+            string s1;
+            s[i] = '_';
+            for(int j = i+1; j < n; j++)
+            {
+                i++;
+                if(s[j]==')')
+                {
+                    s[j] = '_';
+                    break;
+                }
+
+                    else
+                        s1 +=s[j];
+            s[j]='_';
+            }
+            vs.pb(s1);
+        }
+
+
+
+
+     int t = 0;
+     for(int i = 0; i < vs.size(); i++)
+     {
+         t+= fun(vs[i] , vs[i].size());
+     }
+    cout<< fun1(s) << " " << t << endl;
+
+}
+Link:http://codeforces.com/contest/723/standings
