@@ -1,0 +1,69 @@
+ProblemA 
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+ll arr1[100001];
+ll arr2[100001];
+int main()
+{
+   ll n ,m , z;
+   while(cin >> n >> m >> z)
+   {
+       vector <int> vc, vk;
+
+       for(int i = n; i <= z; i += n)
+       {
+
+           vc.push_back(i);
+       }
+       for(int i = m; i <= z; i += m)
+       {
+
+           vk.push_back(i);
+       }
+       int c = 0;
+       for(int i = 0; i < vc.size(); i++)
+       {
+           bool k = binary_search(vk.begin(), vk.end(), vc[i]);
+           if(k == true)
+            c++;
+       }
+       cout<<c<< endl;
+
+   }
+
+
+}
+
+Problem B
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+ll arr[200005];
+int main()
+{
+   ll n;
+   while(cin >> n){
+   for(int i = 1; i <= n; i++)
+   {
+       cin >> arr[i];
+   }
+
+   for(int i = 1; i <= n - i + 1; i++)
+   {
+       if(i % 2 == 1)
+       {
+           int temp;
+           temp = arr[i];
+           arr[i] = arr[n - i + 1];
+           arr[n - i + 1] = temp;
+       }
+   }
+
+   for(int i = 1; i <= n; i++)
+   {
+       printf("%lld ", arr[i]);
+   }
+   }
+}
+http://codeforces.com/contest/764
