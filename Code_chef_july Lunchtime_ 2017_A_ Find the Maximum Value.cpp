@@ -72,3 +72,4 @@ int main()
    }
 
 }
+//https://www.codechef.com/LTIME50/problems/LOSTMAX
